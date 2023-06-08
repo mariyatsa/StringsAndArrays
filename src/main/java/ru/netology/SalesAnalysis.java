@@ -13,8 +13,8 @@ public class SalesAnalysis {
         return minMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
     }
 
-    public int BelowAverage(int[] sales) {
-        int summa = 15;
+    public int belowAverage(int[] sales) {
+        int summa = findAverageWithoutUsingStream(sales) ;
         int monthMin = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < summa)
@@ -23,8 +23,8 @@ public class SalesAnalysis {
         return monthMin;
     }
 
-    public int AboveAverage(int[] sales) {
-        int summa = 15; // Среднее значение
+    public int aboveAverage(int[] sales) {
+        int summa = findAverageWithoutUsingStream(sales); // Среднее значение
         int monthMax = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] > summa)
@@ -43,7 +43,7 @@ public class SalesAnalysis {
         return maxMonth + 1;
     }
 
-    public int AverageSalesAmount(int[] sales) {
+    public int averageSalesAmount(int[] sales) {
         int summa = 0;
         for (int i = 0; i < sales.length; i++) {
             summa = (summa + sales[i]);
@@ -57,5 +57,18 @@ public class SalesAnalysis {
             sum = sum + sales[i];
         }
         return sum;
+    }
+
+    public int findSumWithoutUsingStream(int[] sales) {
+        int sum = 0;
+        for (int value : sales) {
+            sum += value;
+        }
+        return sum;
+    }
+
+    public int findAverageWithoutUsingStream(int[] sales) {
+        int sum = findSumWithoutUsingStream(sales);
+        return (int) sum / sales.length;
     }
 }

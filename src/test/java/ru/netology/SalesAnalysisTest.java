@@ -36,7 +36,7 @@ public class SalesAnalysisTest {
         SalesAnalysis service = new SalesAnalysis();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 15;
-        int actual = service.AverageSalesAmount(sales);
+        int actual = service.averageSalesAmount(sales);
         Assertions.assertEquals(expected, actual);
     }
 
@@ -45,7 +45,7 @@ public class SalesAnalysisTest {
         SalesAnalysis service = new SalesAnalysis();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.BelowAverage(sales);
+        int actual = service.belowAverage(sales);
         Assertions.assertEquals(expected, actual);
     }
 
@@ -54,7 +54,24 @@ public class SalesAnalysisTest {
         SalesAnalysis service = new SalesAnalysis();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.AboveAverage(sales);
+        int actual = service.aboveAverage(sales);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void summaMassiva() {
+        SalesAnalysis service = new SalesAnalysis();
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 180;
+        int actual = service.findSumWithoutUsingStream(sales);
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void averageValueMassiva() {
+        SalesAnalysis service = new SalesAnalysis();
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 15;
+       int actual = service.findAverageWithoutUsingStream(sales);
         Assertions.assertEquals(expected, actual);
     }
 }
